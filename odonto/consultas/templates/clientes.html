@@ -1,0 +1,95 @@
+{%  load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/clientes.css' %}">
+    <title>Clientes</title>
+</head>
+<body>
+    <div class="main">
+        <div class="container">
+            <h1>Cadastrar cliente</h1>
+            <img src="{% static 'images/user.jpg' %}" id="profpic">
+            <form action="{% url 'clientes' %}" method="post" enctype="multipart/form-data">{% csrf_token %}
+                <input type="file" name="foto" accept="image/jpeg, image/png, image/jpg"id="input-file">
+                <label for="input-file" id="labelfile">Escolher foto</label>
+                <p>
+                    <label for="inNome">Nome</label>
+                    <input type="text" id="inNome" name="nome">
+                </p>
+                <p>
+                    <label for="inCpf">CPF</label>
+                    <input type="text" id="inCpf" name="cpf">
+                </p>
+                <p>
+                    <label for="inTelefone">Telefone</label>
+                    <input type="text" id="inTelefone" name="telefone">
+                </p>
+                <p>
+                    <label for="inEndereco">Endereço</label>
+                    <input type="text" name="endereco">
+                </p>
+                <input type="submit" value="Enviar">
+            </form>
+        </div>
+        <div class="mostrador">
+            {% for i in clientes %}
+            <div class="cliente">
+                <div class="nomeFoto">
+                    <img src="../{{i.foto}}" alt="{{i.nome}}" onclick="console.log(this.src)">
+                    <div class="nomecliente">{{ i.nome }}</div>
+                    <button onclick="inv(this)" id="b{{i.nome}}">+</button>
+                </div>
+                <div class="dados inv" id="{{i.nome}}">
+                    <p class="dcpf">CPF: {{i.cpf}}</p>
+                    <p class="dtelefone">Telefone: {{i.telefone}}</p>
+                    <p class="dendereco">Endereço: {{i.endereco}}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <script>
+
+        let profPic = document.getElementById("profpic")
+        let inputf = document.getElementById("input-file")
+
+        inputf.onchange = function(){
+            profPic.src = URL.createObjectURL(inputf.files[0])
+        }
+
+        document.getElementById('inCpf').addEventListener('input', function(e) {
+          var value = e.target.value;
+          var cpfPattern = value.replace(/\D/g, '')
+        						.replace(/(\d{3})(\d)/, '$1.$2')
+        						.replace(/(\d{3})(\d)/, '$1.$2')
+        						.replace(/(\d{3})(\d)/, '$1-$2')
+        						.replace(/(-\d{2})\d+?$/, '$1');
+          e.target.value = cpfPattern;
+        });
+
+        document.getElementById('inTelefone').addEventListener('input', function(e) {
+            var value = e.target.value;
+            var telefonePattern =  value.replace(/\D/g, '')
+                                        .replace(/^(\d{2})(\d)/, '($1) $2')
+                                        .replace(/(\d{5})(\d)/, '$1-$2')
+                                        .replace(/(-\d{4})\d+?$/, '$1');
+            e.target.value = telefonePattern;
+        });
+
+        function inv(b){
+            let a = document.getElementsByClassName("dados")
+
+            let iddadiv = b.id.slice(1)
+
+            document.getElementById(iddadiv).classList.toggle("inv")
+
+        }
+
+    </script>
+</body>
+</html>

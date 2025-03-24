@@ -1,0 +1,191 @@
+@font-face {
+    font-family: 'Roboto';
+    src: url("../fonts/Roboto_Condensed-Regular.ttf") format("truetype");
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto';
+    color: aliceblue;
+}
+
+h1{
+    color: aliceblue;
+    margin-top: 30px;
+    font-weight: 100;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(233, 233, 233);
+}
+
+.main{
+    height: 670px;
+    width: 1000px;
+    background: linear-gradient(90deg, rgba(42,157,255,1) 0%, rgba(39,174,255,1) 100%);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 0px 0px 35px rgba(0, 0, 0, 0.384);
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.082);
+    height: 650px;
+    width: 400px;
+    margin-left: 10px;
+}
+
+.mostrador{
+    height: 650px;
+    max-height: 650px;
+    margin-left: 20px;
+    width: 550px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: scroll;
+}
+
+.mostrador::-webkit-scrollbar{
+    display: none;
+}
+
+.container img{
+    margin-top: 30px;
+    border-radius: 50%;
+    height: 190px;
+    width: 190px;
+}
+
+.cliente {
+    background-color: rgba(0, 0, 0, 0.247);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.1rem;
+    min-height: 60px;
+    width: 530px;
+    border-radius: 8px;
+    margin-top: 6px;
+}
+
+.cliente .nomeFoto{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    margin-top: 7px;
+    margin-bottom: 7px;
+}
+
+.nomeFoto button{
+    height: 30px;
+    width: 30px;
+    background-color: rgb(0, 102, 255);
+    margin-left: auto;
+    margin-right: 15px;
+    border: 0;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    outline: 2px solid aliceblue;
+}
+
+.nomeFoto button:hover{
+    cursor: pointer;
+}
+
+.cliente .dados{
+    width: 95%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.cliente img{
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+input[type="file"]{
+    display: none;
+}
+
+input[type="text"]{
+    outline: 0;
+    border: 0;
+    width: 250px;
+    height: 30px;
+    background-color: rgba(0, 0, 0, 0.144);
+    border-radius: 5px;
+}
+
+form label{
+    
+    margin-top: 6px;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form p{
+    display: flex;
+    flex-direction: column;
+}
+
+form input[type="submit"]{
+    background-color: rgba(0, 0, 0, 0.308);
+    color: aliceblue;
+    font-size: 1.2rem;
+    width: 250px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    outline: 0;
+    border: 0;
+    
+    margin-top: 10px;
+}
+
+form input[type="submit"]:hover{
+    cursor: pointer;
+}
+
+#labelfile{
+    background-color: rgba(0, 0, 0, 0.308);
+    color: aliceblue;
+    font-size: 1.2rem;
+    width: 250px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+#labelfile:hover{
+    cursor: pointer;
+}
+
+.inv {
+    display: none;
+}
